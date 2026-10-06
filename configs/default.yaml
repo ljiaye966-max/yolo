@@ -1,0 +1,60 @@
+project_name: construction_ppe_monitor
+classes:
+  - person
+  - helmet
+  - vest
+  - no_helmet
+dataset:
+  raw_dir: datasets/raw
+  processed_dir: datasets/processed
+  report_dir: datasets/reports/data_quality
+  quarantine_dir: datasets/quarantine
+  split_ratio:
+    train: 0.8
+    val: 0.1
+    test: 0.1
+  seed: 42
+  construction_ppe_url: https://github.com/ultralytics/assets/releases/download/v0.0.0/construction-ppe.zip
+model:
+  weights: runs/train_20260924_100207_225422/weights/best.pt
+  data: datasets/processed_augmented/data.yaml
+  runs_dir: runs
+  epochs: 100
+  batch: 16
+  imgsz: 640
+  lr0: 0.01
+  device: auto
+  workers: 0
+  amp: false
+  plots: false
+  cache: false
+  seed: 42
+  # Global threshold is low enough to retain small helmets; class thresholds
+  # below remove low-quality person/vest/no_helmet predictions afterward.
+  conf: 0.10
+  iou: 0.45
+  imgsz: 640
+  inference_imgsz: 960
+  class_confidence:
+    person: 0.35
+    helmet: 0.10
+    vest: 0.35
+    no_helmet: 0.25
+rules:
+  min_confidence: 0.35
+  min_consecutive_frames: 3
+  cooldown_seconds: 10
+  # Treat an unpaired person as a suspected violation only when the vest
+  # association supports it. Explicit no_helmet detections always remain reviewable.
+  infer_missing_helmet_requires_vest: true
+  missing_helmet_min_person_height_px: 80
+  person_match_iou: 0.01
+  helmet_upper_zone: 0.45
+  vest_lower_zone: 0.60
+database:
+  path: data/events.sqlite3
+llm:
+  base_url_env: OPENAI_BASE_URL
+  api_key_env: OPENAI_API_KEY
+  model_env: OPENAI_MODEL
+  

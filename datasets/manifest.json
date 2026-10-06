@@ -1,0 +1,56 @@
+{
+  "generated_at": "2026-09-24T02:00:47.129851+00:00",
+  "project_classes": [
+    "person",
+    "helmet",
+    "vest",
+    "no_helmet"
+  ],
+  "downloaded": [
+    "construction_ppe:datasets/raw/construction_ppe",
+    "voxel51_hard_hat_detection:datasets/raw/voxel51_hardhat",
+    "shwd:datasets/raw/shwd/VOC2028.zip (incomplete; skipped)"
+  ],
+  "sources": {
+    "construction_ppe": {
+      "url": "https://github.com/ultralytics/assets/releases/download/v0.0.0/construction-ppe.zip",
+      "license": "AGPL-3.0",
+      "format": "YOLO",
+      "notes": "Official Ultralytics source; map only person/helmet/vest/no_helmet for this project."
+    },
+    "shwd": {
+      "url": "https://github.com/njvisionpower/Safety-Helmet-Wearing-Dataset",
+      "download_url": "https://drive.google.com/file/d/1qWm7rrwvjAWs1slymbrLaCf7Q-wnGLEX/view?usp=drive_open",
+      "license": "MIT (verify original dataset terms)",
+      "format": "Pascal VOC XML",
+      "notes": "Repository metadata only; direct archive links are hosted by Baidu/Google Drive."
+    },
+    "voxel51_hard_hat_detection": {
+      "url": "https://huggingface.co/datasets/Voxel51/hard-hat-detection",
+      "license": "CC0-1.0 per dataset card",
+      "format": "FiftyOne samples.json + images",
+      "notes": "Head labels are mapped to no_helmet; absence of vest is not inferred."
+    },
+    "hardhat_workers": {
+      "url": "https://public.roboflow.com/object-detection/hard-hat-workers",
+      "license": "Public Domain per dataset page",
+      "format": "YOLO/VOC",
+      "notes": "Roboflow public export endpoint may require an account; not used when it returns an HTML page."
+    },
+    "pictor": {
+      "url": "https://github.com/ciber-lab/pictor-ppe",
+      "download_url": "https://drive.google.com/drive/folders/1akhyTNVrkqMMcIFUQCEbW5ehfmG0CdYH?usp=sharing",
+      "license": "See upstream dataset/repository terms",
+      "format": "upstream-specific",
+      "notes": "Check the upstream dataset download and research-use terms."
+    },
+    "chv": {
+      "url": "https://github.com/ZijianWang-ZW/PPE_detection",
+      "download_url": "https://drive.google.com/file/d/1fdGn67W0B7ShpBDbbQpUF0ScPQa4DR0a/view?usp=sharing",
+      "license": "Free use per upstream README; verify before redistribution",
+      "format": "upstream-specific",
+      "notes": "Dataset files are linked from Google Drive/Baidu Yunpan, not stored in the repository."
+    }
+  },
+  "policy": "No raw data deletion; unknown files are quarantined only by explicit validation command."
+}
