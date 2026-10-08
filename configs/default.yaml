@@ -35,6 +35,7 @@ model:
   iou: 0.45
   imgsz: 640
   inference_imgsz: 960
+  camera_imgsz: 640
   class_confidence:
     person: 0.35
     helmet: 0.10

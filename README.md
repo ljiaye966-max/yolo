@@ -15,6 +15,10 @@ D:\Program Files\Anaconda\envs\py310_env\python.exe scripts\train_model.py --smo
 D:\Program Files\Anaconda\envs\py310_env\python.exe -m streamlit run web\app.py
 ```
 
+启动网页后，页面包含“图片检测”和“摄像头监控”两个入口。图片检测功能保持不变；在“摄像头监控”中点击启动按钮并允许浏览器访问摄像头，即可查看实时检测框。摄像头事件按连续帧规则写入历史事件，并将触发事件的画面保存到 `runs/camera_events`。
+
+摄像头模式使用浏览器 WebRTC。使用 `localhost` 访问时可以直接申请摄像头权限；如果从其他电脑访问，需要通过 HTTPS 提供页面，否则浏览器通常会禁止摄像头访问。摄像头推理默认使用 `model.camera_imgsz: 640`，图片检测使用 `model.inference_imgsz: 960`，可在 `configs/default.yaml` 中调整。
+
 默认训练脚本不会替用户启动正式训练。完成数据校验并确认数据、模型、epochs、device 后，再运行：
 
 ```powershell
